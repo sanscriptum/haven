@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>OldHaven Changelog</title>
+  <link rel="stylesheet" type="text/css" href="changelog.css">
+  <script type='text/javascript'>
+  
+	function changeText(tagID, newText, linkTagID){
+		var tag = document.getElementById(tagID);
+		tag.innerHTML = newText;
+		var linkTag = document.getElementById(linkTagID);
+		linkTag.removeAttribute("href");
+		linkTag.removeAttribute("onclick");
+	}
+	
+  </script>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+<!-- 
+Header Section 
+-->
+<table align='center' width='650'><tr><td>
+<table align='center' class="top">
+	<tr>
+		<td valign='top'>
+			<div align='center'><font size='4'><b>Old Haven - A Space Station 13 Server</b></font><br>
+			<font size='2'>OldHaven station based on modded BlackTyranny Bay12 build by ZLOFENIX (ver. 21.12.13), uses map from RSQStation<br>
+			Code licensed under <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a>. Content licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.<br><br>
+			</td>
+	</tr>
+</table></div>
+<br><b>OldHaven Credit List</b>
+<table align='center' class="top">
+	<tr>
+		<td valign='top'>
+			<font size='2'><b>Code:</b> the_vm, Zzorgy<br></font>
+			<font size='2'><b>Mapping:</b> the_vm, Zzorgy<br></font>
+			<font size='2'><b>Sounds:</b> the_vm<br></font>
+			<font size='2'><b>Thanks To:</b> Baystation12, Animus Station, RSQStation, /tg/ station, Goonstation, Daedalus, and original Spacestation 13 devs. Skibiliano for the IRC bot.</font>
+			</td>
+	</tr>
+</table>
+<br><b>Baystation 12 Credit List</b>
+<table align='center' class="top">
+	<tr>
+		<td valign='top'>
+			<font size='2'><b>Code:</b> Abi79, Aryn, Cael_Aislinn, Chinsky, cib, CompactNinja, DopeGhoti, Erthilo, Hawk_v3, Head, Ispil, Lexusjjss, Melonstorm, Miniature, Mloc, SkyMarshal, Spectre, Strumpetplaya, Sunfall, Tastyfish, Uristqwerty<br></font>
+			<font size='2'><b>Sprites:</b> Apple_Master, Arcalane, Chinsky, CompactNinja, Deus Dactyl, Erthilo, Flashkirby, Miniature, Searif, Xenone<br></font>
+			<font size='2'><b>Sounds:</b> Aryn<br></font>
+			</td>
+	</tr>
+</table>
+<br><b>Animus13 BlackTyranny Credit List</b><br>
+<table align='left' class="top">
+	<tr>
+		<td valign='top'>			
+			<font size='2'><b>Code:</b></font> BeTePb, Lethal Ghost, TestUnit, Barka<br>
+			<b>Retirees:</b> <font size='2' color='black'>RNM4RL3Y, Krieg, AleksCr, Intercross21, LittleChaos</font>
+		</td>
+	</tr>
+</table>
+<br><br>
+<!-- 
+Changelog Section 
+-->
+
+<!-- NOTE TO UPDATERS!! Please only list things which are important to players. 
+Stuff which is in development and not yet visible to players or just code related 
+(ie. code improvements for expandability, etc.) should not be listed here. They 
+should be listed in the changelog upon commit though. Thanks. -->
+
+<!-- To take advantage of the pretty new format (well it was new when I wrote this anyway), open the "add-to-changelog.html" file in any browser and add the stuff and then generate the html code and paste it here -->
+
+<!-- addon type -  <li class="tweak">  <li class="bugfix"> <li class="rscadd"> 
+example: <div class="commit sansserif">
+	<h2 class="date">date</h2>
+	<h3 class="author">nickname updated:</h3>
+	<ul class="changes bgimages16">
+		<li class="type">what is it?</li>
+	</ul>
+</div>
+
+-->
+<div class="commit sansserif">
+	<h2 class="date">14.03.2014</h2>
+	<h3 class="author">the_vm updated:</h3>
+	<ul class="changes bgimages16">
+		<li class="rscadd">Большое изменение брига, добавлен тир и душевая, изменен офис адвоката и детектива</li>
+		<li class="rscadd">Добавлены новые секретные отсеки</li>
+		<li class="rscadd">Изменен спрайт кровати</li>
+		<li class="rscadd">Изменен спрайт песка</li>
+		<li class="tweak">Небольшое изменение РД</li>
+		<li class="tweak">Было сделано очень много изменений и исправлений, большинство из которых было забыто и не записано в чейнджлог, просим прощения</li>
+		<li class="bugfix">Исправлены все найденные на данный момент ошибки и недочеты на карте</li>
+	</ul>
+</div>
+
+
+<div class="commit sansserif">
+	<h2 class="date">25.02.2014</h2>
+	<h3 class="author">the_vm updated:</h3>
+	<ul class="changes bgimages16">
+		<li class="tweak">Начата разработка билда</li>
+		<li class="tweak">Перенесена карта с RSQStation</li>
+		<li class="rscadd">Изменены звуки стрельбы, версия 0.1, будут доработаны</li>
+		<li class="rscadd">Изменена музыка в лобби</li>
+		<li class="rscadd">Добавлена музыка в конце раунда</li>
+		<li class="rscadd">Добавлены звуки шагов</li>
+		<li class="tweak">Слегка изменён спрайт акселератора сингулярности - теперь будет видно прикручены ли части гаечным ключом, и проложены ли провода</li>
+		<li class="tweak">Небольшое изменение в интерфейсе - на панели прицеливания обозначены стороны R и L  (правое и левое соответственно)</li>
+		<li class="bugfix">Добавлены предметы и исправлена планировка комнат на карте. Также исправлены многие оригинальные недочёты на карте RSQStation, теперь раздвижные двери будут смотреть в правильную сторону</li>
+	</ul>
+</div>
+
+<!-- 
+Credits Section 
+-->
+
+<b>/tg/ station 13 Development Team</b>
+<table align='center' class="top">
+	<tr>
+		<td valign='top'>
+			<font size='2'><b>Coders:</b> TLE, NEO, Errorage, muskets, veryinky, Skie, Noise, Numbers, Agouri, Noka, Urist McDorf, Uhangi, Darem, Mport, rastaf0, Doohl, Superxpdude, Rockdtben, ConstantA, Petethegoat, Kor, Polymorph, Carn, Nodrak, Donkie<br></font>
+			<font size='2'><b>Spriters:</b> Agouri, Cheridan, Cruazy Guest, Deeaych, Deuryn, Matty406, Microwave, ShiftyEyesShady, Skie, Uhangi, Veyveyr, Petethegoat, Kor, Ricotez, Ausops, TankNut<br></font>
+			<font size='2'><b>Sounds:</b> Skie, Lasty/Vinyl<br></font>
+			<font size='2'><b>Thanks to:</b> CDK Station devs, GoonStation devs, the original SpaceStation developers and Invisty for the title image</font>
+		</td>
+	</tr>
+</table>
+
+<b>Daedalus Development Team</b>
+<table align='center' class="top">
+	<tr>
+		<td valign="top">
+			<font size="2"><b>Coders:</b> DopeGhoti, Sunfall, ThVortex</font><br>
+			<font size="2"><b>Artwork:</b> Captain Hammer</font><br>
+			<font size="2"><b>Spriters:</b> ((TODO.))</font><br>
+			<font size="2"><b>Sounds:</b> Peter J, due, Erik Satie</font><br>
+			<font size="2"><b>Thanks to:</b> All the dev teams that came before: BS12, /tg/station13, the Goons, and the original SS13 folks.</font><br>
+		</td>
+	</tr>
+</table>
+
+<b>GoonStation 13 Development Team</b>
+	<div class = "top">
+	<font size='2'><b>Coders:</b> Stuntwaffle, Showtime, Pantaloons, Nannek, Keelin, Exadv1, hobnob, Justicefries, 0staf, sniperchance, AngriestIBM, BrianOBlivion<br></font>
+	<font size='2'><b>Spriters:</b> Supernorn, Haruhi, Stuntwaffle, Pantaloons, Rho, SynthOrange, I Said No<br></font>
+	</div>
+<p class="lic"><div align='center'><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><i>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.<br>Rights are currently extended to <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a> only.</i></p>
+<p class="lic">Some icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a>. All rights reserved. Licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.</p>
+</td></tr></table></div>
+</body>
+</html>

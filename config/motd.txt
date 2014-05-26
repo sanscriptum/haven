@@ -1,0 +1,11 @@
+<h1>Welcome to OldHaven!</h1>
+
+-<i>This server based on modded Bay12 build by ZLOFENIX</i>
+<br>
+<i><small>For more information check out our changelog!</i></small>
+<br><br>
+<strong>Build is currently on beta-testing, so it may have some bugs. Report them to adminhelp</strong>
+<br>
+<strong>Rules and roleplaying tips:</strong> <a href="http://baystation12.net/wiki/index.php/Rules">http://baystation12.net/wiki/index.php/Rules</a> or the Rules command.</strong>
+<br><br>
+This is a roleplaying server, so don't forget to remain in character while playing. Make sure to read and abide by the rules and if you have any questions, feel free to adminhelp!
