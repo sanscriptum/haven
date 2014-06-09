@@ -38,7 +38,8 @@ var/global/datum/controller/gameticker/ticker
 
 /datum/controller/gameticker/proc/pregame()
 	login_music = pick(\
-	'sound/music/protoss.ogg',\
+	'sound/music/longway.ogg',\
+	'sound/music/terran1.ogg',\
 	'sound/music/miami.ogg',\
 	'sound/music/daisuke.ogg')
 	do
