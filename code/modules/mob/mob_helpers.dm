@@ -1,4 +1,3 @@
-
 // fun if you want to typecast humans/monkeys/etc without writing long path-filled lines.
 /proc/ishuman(A)
 	if(istype(A, /mob/living/carbon/human))
@@ -112,6 +111,11 @@
 
 proc/isobserver(A)
 	if(istype(A, /mob/dead/observer))
+		return 1
+	return 0
+
+proc/isovermind(A) //Blob
+	if(istype(A, /mob/camera/blob))
 		return 1
 	return 0
 
@@ -240,43 +244,68 @@ proc/slur(phrase)
 	var/counter=lentext(phrase)
 	var/newphrase=""
 	var/newletter=""
+	var/lletter=""
+	var/newLnum
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
+		lletter = newletter
+		newLnum = text2ascii(newletter)
+		switch(newLnum)
+			if(65 to 90)
+				lletter = ascii2text(newLnum + 32)
+			if (192 to 223)
+				lletter = ascii2text(newLnum + 32)
 		if(rand(1,3)==3)
-			if(lowertext(newletter)=="o")	newletter="u"
-			if(lowertext(newletter)=="s")	newletter="ch"
-			if(lowertext(newletter)=="a")	newletter="ah"
-			if(lowertext(newletter)=="c")	newletter="k"
+			if(lletter=="o")	newletter="u"
+			if(lletter=="s")	newletter="ch"
+			if(lletter=="a")	newletter="ah"
+			if(lletter=="c")	newletter="k"
+			if(text2ascii(lletter) == 247)	newletter = ascii2text(249)
+			if(text2ascii(lletter) == 229)	newletter = ascii2text(232)
 		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext(newletter)]"
-			if(7)	newletter+="'"
-			//if(9,10)	newletter="<b>[newletter]</b>"
-			//if(11,12)	newletter="<big>[newletter]</big>"
-			//if(13)	newletter="<small>[newletter]</small>"
+			if(1 to 4)
+				newletter = "[lowertext(newletter)]"
+				if(text2ascii(newletter) >223 && text2ascii(newletter) < 256)
+					newletter = ascii2text(text2ascii(newletter) - 32)
+			if(5 to 8)
+				newletter = "[uppertext(newletter)]"
+				if(text2ascii(newletter) >191 && text2ascii(newletter) < 224)
+					newletter = ascii2text(text2ascii(newletter) + 32)
+			if(9)	newletter+="'"
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
-/proc/stutter(n)
-	var/te = html_decode(n)
-	var/t = ""//placed before the message. Not really sure what it's for.
-	n = length(n)//length of the entire word
-	var/p = null
-	p = 1//1 is the start of any word
-	while(p <= n)//while P, which starts at 1 is less or equal to N which is the length.
-		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
-		if (prob(80) && (ckey(n_letter) in list("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
+/proc/stutter(text)
+	text = html_decode(text)
+	var/t = ""
+	var/lenght = length(text)//length of the entire word
+	var/alphabet[0]
+	//alphabet.Add("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")
+	//alphabet.Add("á","â","ã","ä","æ","ç","é","ê","ë","ì","í","ï","ð","ñ","ò","ô","õ","ö","÷","ø","ù")
+	alphabet.Add(98,99,100,102,103,104,105,106,107,108,109,110,112,113,114,115,116,118,119,120,121,122)
+	alphabet.Add(225,226,227,228,230,231,233,234,235,236,237,239,240,241,242,244,245,246,247,248,249)
+	var/letter
+	var/lcase_letter
+	var/tletter
+	var/p = 1
+	while(p <= lenght)//while P, which starts at 1 is less or equal to N which is the length.
+		letter = copytext(text, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
+		tletter = letter
+		lcase_letter = text2ascii(letter)
+		if((lcase_letter >= 65 && lcase_letter <=90) || (lcase_letter >= 192 && lcase_letter <=223))
+			tletter = ascii2text(lcase_letter + 32)
+		if (prob(80) && (text2ascii(tletter) in alphabet))
 			if (prob(10))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")//replaces the current letter with this instead.
+				letter = text("[letter]-[letter]-[letter]-[letter]")//replaces the current letter with this instead.
 			else
 				if (prob(20))
-					n_letter = text("[n_letter]-[n_letter]-[n_letter]")
+					letter = text("[letter]-[letter]-[letter]")
 				else
 					if (prob(5))
-						n_letter = null
+						letter = null
 					else
-						n_letter = text("[n_letter]-[n_letter]")
-		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
+						letter = text("[letter]-[letter]")
+		t = text("[t][letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
 	return copytext(sanitize(t),1,MAX_MESSAGE_LEN)
 
@@ -325,7 +354,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			n_letter = text("[n_letter]")
 		t = text("[t][n_letter]")
 		p=p+n_mod
-	return copytext(sanitize(t),1,MAX_MESSAGE_LEN)
+	return copytext(t,1,MAX_MESSAGE_LEN)
 
 
 /proc/shake_camera(mob/M, duration, strength=1)
@@ -357,57 +386,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		return 1
 
 	return 0
-
-//Triggered when F12 is pressed (Unless someone changed something in the DMF)
-/mob/verb/button_pressed_F12()
-	set name = "F12"
-	set hidden = 1
-
-	if(hud_used)
-		if(ishuman(src))
-			if(!src.client) return
-
-			if(hud_used.hud_shown)
-				hud_used.hud_shown = 0
-				if(src.hud_used.adding)
-					src.client.screen -= src.hud_used.adding
-				if(src.hud_used.other)
-					src.client.screen -= src.hud_used.other
-				if(src.hud_used.hotkeybuttons)
-					src.client.screen -= src.hud_used.hotkeybuttons
-				if(src.hud_used.item_action_list)
-					src.client.screen -= src.hud_used.item_action_list
-
-				//Due to some poor coding some things need special treatment:
-				//These ones are a part of 'adding', 'other' or 'hotkeybuttons' but we want them to stay
-				src.client.screen += src.hud_used.l_hand_hud_object	//we want the hands to be visible
-				src.client.screen += src.hud_used.r_hand_hud_object	//we want the hands to be visible
-				src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
-				src.hud_used.action_intent.screen_loc = ui_acti_alt	//move this to the alternative position, where zone_select usually is.
-
-				//These ones are not a part of 'adding', 'other' or 'hotkeybuttons' but we want them gone.
-				src.client.screen -= src.zone_sel	//zone_sel is a mob variable for some reason.
-
-			else
-				hud_used.hud_shown = 1
-				if(src.hud_used.adding)
-					src.client.screen += src.hud_used.adding
-				if(src.hud_used.other && src.hud_used.inventory_shown)
-					src.client.screen += src.hud_used.other
-				if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
-					src.client.screen += src.hud_used.hotkeybuttons
-
-
-				src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
-				src.client.screen += src.zone_sel				//This one is a special snowflake
-
-			hud_used.hidden_inventory_update()
-			hud_used.persistant_inventory_update()
-			update_action_buttons()
-		else
-			usr << "\red Inventory hiding is currently only supported for human mobs, sorry."
-	else
-		usr << "\red This mob type does not use a HUD."
 
 //converts intent-strings into numbers and back
 var/list/intents = list("help","disarm","grab","hurt")

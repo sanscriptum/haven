@@ -31,27 +31,45 @@
 
 /obj/item/clothing/mask/gas/sechailer/blue
 	icon_state = "hailer_blue"
+	var/mode = 0
+	var/voice = "Unknown"
+	var/vchange = 0
 
 /obj/item/clothing/mask/gas/sechailer/black
 	icon_state = "hailer_black"
+	var/mode = 0
+	var/voice = "Unknown"
+	var/vchange = 0
 
 /obj/item/clothing/mask/gas/sechailer/red
 	icon_state = "hailer_red"
+	var/mode = 0
+	var/voice = "Unknown"
+	var/vchange = 0
 
 /obj/item/clothing/mask/gas/sechailer/warden
 	name = "security warden mask"
 	desc = "An elite Security gas mask with integrated 'Compli-o-nator 3000', space ressistant lenses and rebreather. Do not tamper with the device. This one is intended for junior officers."
 	icon_state = "wardenmask"
+	var/mode = 0
+	var/voice = "Unknown"
+	var/vchange = 0
 
 /obj/item/clothing/mask/gas/sechailer/hos
 	name = "head of security mask"
 	desc = "An elite Security gas mask with integrated 'Compli-o-nator 3000', space ressistant lenses and rebreather. Do not tamper with the device. This one is intended for chief commanding officer."
 	icon_state = "hosmask"
+	var/mode = 0
+	var/voice = "Unknown"
+	var/vchange = 0
 
 /obj/item/clothing/mask/gas/sechailer/officer
 	name = "security mask"
 	desc = "An elite Security gas mask with integrated 'Compli-o-nator 3000', space ressistant lenses and rebreather. Do not tamper with the device. This one is intended for privates."
 	icon_state = "officermask"
+	var/mode = 0
+	var/voice = "Unknown"
+	var/vchange = 0
 
 /obj/item/clothing/mask/gas/sechailer/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/screwdriver))

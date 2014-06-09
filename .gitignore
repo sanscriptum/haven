@@ -3,7 +3,6 @@
 *.rsc
 *.dmb
 *.lk
-*.bak
 info.json
 /config/admins.txt
 /config/moderators.txt
